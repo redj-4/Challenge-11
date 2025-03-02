@@ -45,41 +45,38 @@ borrower1.returnBook("The Great Gatsby");
 console.log(borrower1.borrowedBooks); // Expected output: []
 
 //Task 3: Creating a Library Class
-class Library {
-    constructor () {
-        this.books = []; //List all the books in the library
-        this.borrower = []; //List all the borrowers
+class Library { // creates library class
+    constructor(books, borrowers) { // creates arrays 
+        this.books = []; // links to the  books array
+        this.borrowers = []; // links to the  borrowers array
     };
-
-    addbook(book) {
-        this.book.push(book);
-    }; //This will push a book to the library 
-
+    addBook(book) {
+        this.books.push(book) // adds book into array
+    };
     listBooks() {
         this.books.forEach(book => console.log(book.getDetails()));
-    }; //List all books in the library
+    }; // finds each book in the array and logs the details
 
-    addBorrower(borrower) {
-        this.borrower.push(borrower);
-    };
-
-    lendBook(borrowerID, isbn) {  //Part of Task for lending book class
-        const book = this.books.find(book => book.isbn === isbn);//checking if books have avaialbe copies
+    addBorrower(borrower){ // adds a borrower to the array
+        this.borrowers.push(borrower);
+    }
+    lendBook(borrowerId, isbn) {
+        const book = this.books.find(book => book.isbn === isbn);
         const borrower = this.borrowers.find(borrower => borrower.borrowerId === borrowerId);
 
-        if (book && borrower && book.copies > 0) { // checks conditions to lend book
-            book.updateCopies(-1); // removes 1 from stock
+        if (book && borrower && book.copies > 0) { // checks different conditions to lend book
+            book.updateCopies(-1); // removes 1 if book is borrowed
             borrower.borrowBook(book.title);        
         } else {
             console.log("Cannot lend book.")
         }
     }
-
+    
     returnBook(borrowerId, isbn) {
         const book = this.books.find(book => book.isbn === isbn);
         const borrower = this.borrowers.find(borrower => borrower.borrowerId === borrowerId);
-        if (book && borrower) { // checks conditions to return book
-            book.updateCopies(1); // adds 1 to stock
+        if (book && borrower) { // checks conditions to see if book can be return
+            book.updateCopies(1); // adds 1 if book is returned
             borrower.returnBook(book.title);
         }
     }
