@@ -43,3 +43,23 @@ console.log(borrower1.borrowedBooks); // Expected output: ["The Great Gatsby"]
 
 borrower1.returnBook("The Great Gatsby");
 console.log(borrower1.borrowedBooks); // Expected output: []
+
+//Task 3: Creating a Library Class
+class Library {
+    constructor () {
+        this.books = []; //List all the books in the library
+        this.borrower = []; //List all the borrowers
+    };
+
+    addbook(book) {
+        this.book.push(book);
+    }; //This will push a book to the library 
+
+    listBooks() {
+        this.books.forEach(book => console.log(book.getDetails()));
+    }; //List all books in the library
+
+    addBorrower(borrower) {
+        this.borrower.push(borrower);
+    }; //Add a borrower to the library
+};
