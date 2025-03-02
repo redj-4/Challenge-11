@@ -61,5 +61,27 @@ class Library {
 
     addBorrower(borrower) {
         this.borrower.push(borrower);
-    }; //Add a borrower to the library
-};
+    };
+
+    lendBook(borrowerID, isbn) {  //Part of Task for lending book class
+        const book = this.books.find(book => book.isbn === isbn);//checking if books have avaialbe copies
+        const borrower = this.borrowers.find(borrower => borrower.borrowerId === borrowerId);
+
+        if (book && borrower && book.copies > 0) { // checks conditions to lend book
+            book.updateCopies(-1); // removes 1 from stock
+            borrower.borrowBook(book.title);        
+        } else {
+            console.log("Cannot lend book.")
+        }
+    }
+}
+//Test Cases for Task 3
+const library = new Library();
+library.addBook(book1);
+library.listBooks();
+// Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 4"
+
+//Task 4: Implementing Book Borrowing
+library.lendBook(201, 123456);
+console.log(book1.getDetails()); //Expected output: "Title: The Great Gatsby, Author: F. Scott Fitzgerald, ISBN: 123456, Copies: 3"
+console.log(borrower1.borrowedBooks); //Expected output: ["The Great Gatsby"]
